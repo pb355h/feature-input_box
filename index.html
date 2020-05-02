@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+    integrity="sha256-UzFD2WYH2U1dQpKDjjZK72VtPeWP50NoJjd26rnAdUI=" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-8 mt-5 mx-auto">
+        <form class="">
+          <div class="d-flex">
+            <div class="form-group mr-3">
+              <label for="inputPassword">パスワード</label>
+              <input type="password" id="inputPassword" class="form-control pw" value="hogehoge">
+            </div>
+            <div class="form-group mr-3">
+              <label for="inputPasswordConfirm">確認</label>
+              <input type="password" id="inputPasswordConfirm" class="form-control pw2" value="hogehoge">
+            </div>
+            <div class="form-group position-relative mt-auto">
+              <label class="btn-label pw-label" for="eye"><i class="fas fa-eye"></i></label>
+              <input class="btn-input pw-toggle" id="eye" type="checkbox">
+            </div>
+          </div>
+          <small id="passwordHelpInline" class="text-muted">半角英字、数字、記号を組み合わせて 8 文字以上で入力してください</small>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+  <script>
+    const pwToggle = document.querySelector('.pw-toggle');
+    pwToggle.addEventListener('change', function () {
+      const pw = document.querySelector('.pw');
+      const pw2 = document.querySelector('.pw2');
+      const pwLabel = document.querySelector('.pw-label');
+      if (pw.type === 'password' && pw2.type === 'password') {
+        pw.type = 'text';
+        pw2.type = 'text';
+        pwLabel.innerHTML = '<i class="fas fa-eye-slash"></i>';
+      } else {
+        pw.type = 'password';
+        pw2.type = 'password';
+        pwLabel.innerHTML = '<i class="fas fa-eye"></i>';
+      }
+    });
+  </script>
+  <style>
+    .btn-input {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+      top: 0;
+      left: 0;
+    }
+
+    .btn-label {
+      cursor: pointer;
+      border-radius: 5px;
+      background: #ececec;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
+      width: 38px;
+      height: calc(1.5em + .75rem + 2px);
+    }
+  </style>
+</body>
+
+</html>
